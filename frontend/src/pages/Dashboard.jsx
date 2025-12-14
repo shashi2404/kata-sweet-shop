@@ -65,6 +65,34 @@ const Dashboard = () => {
   useEffect(() => {
     fetchSweets();
   }, []);
+  const inputStyle = {
+  padding: '12px 14px',
+  borderRadius: '12px',
+  border: '1px solid #e5e7eb',
+  fontSize: '14px',
+  outline: 'none',
+};
+
+const primaryBtn = {
+  padding: '12px 28px',
+  backgroundColor: '#ec4899',
+  color: '#ffffff',
+  border: 'none',
+  borderRadius: '12px',
+  fontWeight: '600',
+  cursor: 'pointer',
+};
+
+const secondaryBtn = {
+  padding: '12px 28px',
+  backgroundColor: '#f3f4f6',
+  color: '#374151',
+  border: 'none',
+  borderRadius: '12px',
+  fontWeight: '600',
+  cursor: 'pointer',
+};
+
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
@@ -108,6 +136,29 @@ const Dashboard = () => {
           </button>
         </div>
       </nav>
+{/* HERO SECTION */}
+<div
+  style={{
+    backgroundImage:
+      "linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    padding: '70px 20px',
+    textAlign: 'center',
+  }}
+>
+  <h1 style={{ fontSize: '42px', fontWeight: '800', color: '#1f2937' }}>
+    Discover Delicious Sweets
+  </h1>
+
+  <p style={{ fontSize: '17px', color: '#4b5563', maxWidth: '680px', margin: '0 auto' }}>
+    Browse our collection of handcrafted sweets and treats
+  </p>
+</div>
+
+
+
+
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
         {message && (
@@ -122,111 +173,88 @@ const Dashboard = () => {
           </div>
         )}
 
-        <div style={{
-          backgroundColor: '#fff',
-          padding: '20px',
-          borderRadius: '8px',
-          marginBottom: '24px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-        }}>
-          <h2 style={{ margin: '0 0 16px 0', fontSize: '18px' }}>Search & Filter</h2>
+        {/* SEARCH & FILTER */}
+<div
+  style={{
+    backgroundColor: '#ffffff',
+    padding: '26px',
+    borderRadius: '16px',
+    marginBottom: '32px',
+    boxShadow: '0 12px 30px rgba(0,0,0,0.08)',
+  }}
+>
+  <h2
+    style={{
+      marginBottom: '20px',
+      fontSize: '20px',
+      fontWeight: '700',
+      color: '#1f2937',
+    }}
+  >
+    🔍 Search & Filter Sweets
+  </h2>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '12px',
-            marginBottom: '16px'
-          }}>
-            <input
-              type="text"
-              placeholder="Search by name..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                padding: '10px',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                fontSize: '14px'
-              }}
-            />
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '2fr 1fr 1fr 1fr',
+      gap: '14px',
+      marginBottom: '18px',
+    }}
+  >
+    <input
+      type="text"
+      placeholder="Search sweets..."
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      style={inputStyle}
+    />
 
-            <input
-              type="text"
-              placeholder="Category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              style={{
-                padding: '10px',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                fontSize: '14px'
-              }}
-            />
+    <input
+      type="text"
+      placeholder="Category"
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+      style={inputStyle}
+    />
 
-            <input
-              type="number"
-              placeholder="Min Price"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-              style={{
-                padding: '10px',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                fontSize: '14px'
-              }}
-            />
+    <input
+      type="number"
+      placeholder="Min Price"
+      value={minPrice}
+      onChange={(e) => setMinPrice(e.target.value)}
+      style={inputStyle}
+    />
 
-            <input
-              type="number"
-              placeholder="Max Price"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-              style={{
-                padding: '10px',
-                border: '1px solid #ddd',
-                borderRadius: '4px',
-                fontSize: '14px'
-              }}
-            />
-          </div>
+    <input
+      type="number"
+      placeholder="Max Price"
+      value={maxPrice}
+      onChange={(e) => setMaxPrice(e.target.value)}
+      style={inputStyle}
+    />
+  </div>
 
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button
-              onClick={handleSearch}
-              style={{
-                padding: '10px 24px',
-                backgroundColor: '#007bff',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-            >
-              Search
-            </button>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setCategory('');
-                setMinPrice('');
-                setMaxPrice('');
-                fetchSweets();
-              }}
-              style={{
-                padding: '10px 24px',
-                backgroundColor: '#6c757d',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontWeight: '500'
-              }}
-            >
-              Clear
-            </button>
-          </div>
-        </div>
+  <div style={{ display: 'flex', gap: '12px' }}>
+    <button style={primaryBtn} onClick={handleSearch}>
+      Search
+    </button>
+
+    <button
+      style={secondaryBtn}
+      onClick={() => {
+        setSearchQuery('');
+        setCategory('');
+        setMinPrice('');
+        setMaxPrice('');
+        fetchSweets();
+      }}
+    >
+      Clear
+    </button>
+  </div>
+</div>
+
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '40px' }}>
@@ -244,7 +272,7 @@ const Dashboard = () => {
           }}>
             {sweets.map((sweet) => (
               <SweetCard
-                key={sweet.id}
+                key={sweet._id}
                 sweet={sweet}
                 onPurchase={handlePurchase}
                 isAdmin={false}

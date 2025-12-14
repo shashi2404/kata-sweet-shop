@@ -54,7 +54,7 @@ const Admin = () => {
     e.preventDefault();
     try {
       if (selectedSweet) {
-        await sweetsAPI.update(selectedSweet.id, formData);
+        await sweetsAPI.update(selectedSweet._id, formData);
         setMessage('Sweet updated successfully!');
       } else {
         await sweetsAPI.create(formData);
@@ -92,7 +92,7 @@ const Admin = () => {
   const handleRestock = async (e) => {
     e.preventDefault();
     try {
-      await sweetsAPI.restock(selectedSweet.id, parseInt(restockQty));
+      await sweetsAPI.restock(selectedSweet._id, parseInt(restockQty));
       setMessage('Restock successful!');
       setShowRestockModal(false);
       fetchSweets();
@@ -201,7 +201,7 @@ const Admin = () => {
           }}>
             {sweets.map((sweet) => (
               <SweetCard
-                key={sweet.id}
+                key={sweet._id}
                 sweet={sweet}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}
