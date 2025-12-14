@@ -118,3 +118,82 @@ const SweetCard = ({ sweet, onPurchase, onUpdate, onDelete, onRestock, isAdmin }
 };
 
 export default SweetCard;
+// const SweetCard = ({ sweet, onPurchase, onUpdate, onDelete, onRestock, isAdmin }) => {
+//   return (
+//     <div className="relative bg-white rounded-2xl border border-gray-100 p-6 
+//                     shadow-sm hover:shadow-xl transition-all duration-300 
+//                     hover:-translate-y-1">
+
+//       {/* CATEGORY BADGE */}
+//       <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold 
+//                        bg-indigo-50 text-indigo-600 rounded-full">
+//         {sweet.category}
+//       </span>
+
+//       {/* TITLE */}
+//       <h3 className="text-xl font-bold text-gray-800 tracking-wide">
+//         {sweet.name}
+//       </h3>
+
+//       {/* DIVIDER */}
+//       <div className="w-12 h-1 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full my-3" />
+
+//       {/* PRICE */}
+//       <p className="text-3xl font-extrabold text-rose-600">
+//         ${sweet.price}
+//       </p>
+
+//       {/* STOCK STATUS */}
+//       <p
+//         className={`mt-2 text-sm font-medium ${
+//           sweet.quantity > 0 ? "text-green-600" : "text-red-500"
+//         }`}
+//       >
+//         {sweet.quantity > 0 ? `In Stock: ${sweet.quantity}` : "Out of Stock"}
+//       </p>
+
+//       {/* USER ACTION */}
+//       {!isAdmin && (
+//         <button
+//           onClick={() => onPurchase(sweet._id)}
+//           disabled={sweet.quantity === 0}
+//           className="mt-6 w-full py-2.5 rounded-xl font-semibold text-white
+//                      bg-gradient-to-r from-orange-500 to-pink-500
+//                      hover:opacity-90 disabled:from-gray-300 disabled:to-gray-300
+//                      transition"
+//         >
+//           Purchase
+//         </button>
+//       )}
+
+//       {/* ADMIN ACTIONS */}
+//       {isAdmin && (
+//         <div className="mt-6 grid grid-cols-3 gap-2 text-sm">
+//           <button
+//             onClick={() => onUpdate(sweet)}
+//             className="py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white"
+//           >
+//             Edit
+//           </button>
+
+//           <button
+//             onClick={() => onRestock(sweet)}
+//             className="py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 text-white"
+//           >
+//             Restock
+//           </button>
+
+//           <button
+//             onClick={() => onDelete(sweet._id)}
+//             className="py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white"
+//           >
+//             Delete
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SweetCard;
+
